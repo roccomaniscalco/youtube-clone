@@ -1,10 +1,6 @@
-const Video = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h2", {}, props.title),
-    React.createElement("h3", {}, props.dateAdded),
-    React.createElement("h3", {}, props.channel),
-  ]);
-};
+import React from "react"
+import ReactDOM from "react-dom"
+import Video from "./Video";
 
 const App = () => {
   return React.createElement("div", {}, [
