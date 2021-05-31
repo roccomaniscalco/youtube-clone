@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Video from "./Video";
+import SearchArea from "./SearchArea";
 
 const App = () => {
   return (
     <div>
+      <SearchArea></SearchArea>
       <h1>WeTube</h1>
       <Video
         title="The Best Video Ever"
