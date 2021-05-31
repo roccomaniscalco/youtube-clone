@@ -5,20 +5,24 @@ import SearchArea from "./SearchArea";
 
 const App = () => {
   return (
-    <div>
-      <SearchArea></SearchArea>
-      <h1>WeTube</h1>
-      <Video
-        title="The Best Video Ever"
-        dateAdded="09/27/2001"
-        channel="Rocco"
-      />
-      <Video
-        title="The Coolest Video Ever"
-        dateAdded="2 days ago"
-        channel="Ema"
-      />
-    </div>
+    <>
+      <header>
+        <h1>WeTube</h1>
+        <SearchArea></SearchArea>
+      </header>
+      <main>
+        <Video
+          title="The Best Video Ever"
+          dateAdded="09/27/2001"
+          channel="Rocco"
+        />
+        <Video
+          title="The Coolest Video Ever"
+          dateAdded="2 days ago"
+          channel="Ema"
+        />
+      </main>
+    </>
   );
 };
 
