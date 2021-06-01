@@ -8,9 +8,11 @@ const Results = ({ videos }) => {
         return (
           <Video
             key={video.id.videoId}
+            thumbnail={video.snippet.thumbnails.medium}
             title={video.snippet.title}
             dateAdded={video.snippet.publishedAt}
             channel={video.snippet.channelTitle}
+            description={video.snippet.description}
           ></Video>
         );
       })}

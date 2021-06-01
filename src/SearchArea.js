@@ -6,13 +6,13 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 const searchArea = () => {
-  const [keyword, setKeyword] = useState("Soccer");
+  const [keyword, setKeyword] = useState("search");
   const [videos, setVideos] = useState([]);
 
   const requestSearch = () => {
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?type=video&q=Soccer&part=snippet&maxResults=25&key=${process.env.API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/search?type=video&q=${keyword}&part=snippet&maxResults=25&key=${process.env.API_KEY}`
       )
       .then((res) => {
         const { items } = res.data;
