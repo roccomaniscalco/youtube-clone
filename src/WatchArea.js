@@ -5,7 +5,7 @@ import React from "react";
 class WatchArea extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { loading: true };
   }
 
   componentDidMount() {
@@ -31,6 +31,10 @@ class WatchArea extends React.Component {
   }
 
   render() {
+    if(this.state.loading) {
+        return <h1>loading...</h1>
+    }
+
     const { title, views, description, channel, likes, url } = this.state;
 
     return (
