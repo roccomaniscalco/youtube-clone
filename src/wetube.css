@@ -24,10 +24,6 @@ header {
   background-color: #ad343e;
 }
 
-main {
-  padding: 2rem;
-}
-
 h1 {
   color: #f1f1f1;
   margin-right: 2rem;
@@ -42,11 +38,11 @@ h2 {
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  
+
   height: 2rem;
   border: none;
   outline: none;
-  border-radius: 0.5rem 0.5rem .5rem 0.5rem;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   background-color: #f1f1f1;
 }
 
@@ -54,9 +50,8 @@ h2 {
   height: 2rem;
   border: none;
   outline: none;
-  padding: 0rem 0 0 .75rem;
+  padding: 0rem 0 0 0.75rem;
 
-  
   background: none;
 }
 
@@ -65,12 +60,15 @@ h2 {
   border: none;
   outline: none;
 
-  padding: 0rem .75rem;
+  padding: 0rem 0.75rem;
 
   background: none;
   color: #1f1f1f;
   font-weight: 600;
 
   cursor: pointer;
+}
 
+.results {
+  padding: 2rem;
 }

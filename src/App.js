@@ -1,27 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Video from "./Video";
 import SearchArea from "./SearchArea";
+import Results from "./Results";
 
 const App = () => {
   return (
     <>
-      <header>
-        <h1>WeTube</h1>
-        <SearchArea></SearchArea>
-      </header>
-      <main>
-        <Video
-          title="The Best Video Ever"
-          dateAdded="09/27/2001"
-          channel="Rocco"
-        />
-        <Video
-          title="The Coolest Video Ever"
-          dateAdded="2 days ago"
-          channel="Ema"
-        />
-      </main>
+      <SearchArea></SearchArea>
     </>
   );
 };
