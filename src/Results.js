@@ -13,6 +13,7 @@ const Results = ({ videos }) => {
             dateAdded={video.snippet.publishedAt}
             channel={video.snippet.channelTitle}
             description={video.snippet.description}
+            id={video.id.videoId}
           ></Video>
         );
       })}

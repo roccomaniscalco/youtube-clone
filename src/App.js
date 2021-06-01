@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {Router} from "@reach/router"
+
 import SearchArea from "./SearchArea";
-import Results from "./Results";
+import WatchArea from "./WatchArea";
 
 const App = () => {
   return (
     <>
-      <SearchArea></SearchArea>
+      <Router>
+        <SearchArea path="/" />
+        <WatchArea path="/watch/:id"/>
+      </Router>
     </>
   );
 };
