@@ -7,8 +7,8 @@ const Video = (props) => {
       <img src={props.thumbnail.url} alt="" />
       <div className="video-info">
         <h2>{props.title}</h2>
-        <h3>{props.dateAdded}</h3>
-        <h3>{props.channel}</h3>
+        <span>{props.dateAdded}</span>
+        <span>{props.channel}</span>
         <p>{props.description}</p>
       </div>
     </Link>

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
+import { Link } from "@reach/router";
 
 const searchArea = () => {
   const [keyword, setKeyword] = useState("search");
@@ -16,7 +17,6 @@ const searchArea = () => {
       )
       .then((res) => {
         const { items } = res.data;
-        console.log(items);
         setVideos(items);
       })
       .catch((err) => {
@@ -27,7 +27,9 @@ const searchArea = () => {
   return (
     <div>
       <header>
-        <h1>WeTube</h1>
+        <Link to="/" className="logo"> 
+          <h1>WeTube</h1>
+        </Link>
         <form
           className="search-area"
           onSubmit={(e) => {
