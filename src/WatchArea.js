@@ -2,6 +2,7 @@ import { Link } from "@reach/router";
 import axios from "axios";
 import React from "react";
 import * as AppConstant from "./AppConstant";
+import ErrorBoundary from "./ErrorBoundary";
 import FormatNumber from "./FormatNumber";
 
 class WatchArea extends React.Component {
@@ -11,6 +12,7 @@ class WatchArea extends React.Component {
   }
 
   componentDidMount() {
+    throw new Error();
     axios
       .get(`${AppConstant.VIDEO_URL}&id=${this.props.id}`)
       .then((res) => {
@@ -68,4 +70,10 @@ class WatchArea extends React.Component {
   }
 }
 
-export default WatchArea;
+export default function WatchAreaWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <WatchArea {...props} />
+    </ErrorBoundary>
+  );
+}
