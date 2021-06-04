@@ -1,6 +1,8 @@
 import { Link } from "@reach/router";
 import axios from "axios";
 import React from "react";
+import * as AppConstant from "./AppConstant";
+import FormatNumber from "./FormatNumber";
 
 class WatchArea extends React.Component {
   constructor() {
@@ -10,9 +12,7 @@ class WatchArea extends React.Component {
 
   componentDidMount() {
     axios
-      .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?&part=snippet,statistics,status,player&key=${process.env.API_KEY}&id=${this.props.id}`
-      )
+      .get(`${AppConstant.VIDEO_URL}&id=${this.props.id}`)
       .then((res) => {
         const item = res.data.items[0];
         this.setState({
@@ -31,8 +31,8 @@ class WatchArea extends React.Component {
   }
 
   render() {
-    if(this.state.loading) {
-        return <h1>loading...</h1>
+    if (this.state.loading) {
+      return <h1>loading...</h1>;
     }
 
     const { title, views, description, channel, likes, url } = this.state;
@@ -57,7 +57,8 @@ class WatchArea extends React.Component {
         <div className="player-info">
           <h2>{title}</h2>
           <div className="stat-container">
-            <span> {views} views</span> • <span> {likes} likes</span>
+            <FormatNumber number={views} unit={"views"}></FormatNumber> •{" "}
+            <FormatNumber number={likes} unit={"likes"}></FormatNumber>
           </div>
           <strong> {channel} </strong>
           <p>{description}</p>

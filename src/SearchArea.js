@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Results from "./Results";
+import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
 import axios from "axios";
-import { Link } from "@reach/router";
+import Results from "./Results";
+import * as AppConstant from "./AppConstant";
 
 const searchArea = () => {
   const [keyword, setKeyword] = useState("search");
@@ -12,9 +12,7 @@ const searchArea = () => {
 
   const requestSearch = () => {
     axios
-      .get(
-        `https://youtube.googleapis.com/youtube/v3/search?type=video&q=${keyword}&part=snippet&maxResults=25&key=${process.env.API_KEY}`
-      )
+      .get(`${AppConstant.SEARCH_URL}&q=${keyword}`)
       .then((res) => {
         const { items } = res.data;
         setVideos(items);
@@ -27,7 +25,7 @@ const searchArea = () => {
   return (
     <div>
       <header>
-        <Link to="/" className="logo"> 
+        <Link to="/" className="logo">
           <h1>WeTube</h1>
         </Link>
         <form
