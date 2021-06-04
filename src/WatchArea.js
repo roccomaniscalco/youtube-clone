@@ -12,7 +12,6 @@ class WatchArea extends React.Component {
   }
 
   componentDidMount() {
-    throw new Error();
     axios
       .get(`${AppConstant.VIDEO_URL}&id=${this.props.id}`)
       .then((res) => {
