@@ -29,7 +29,7 @@ header {
   font-size: 1rem;
 }
 
-.search-area {
+#search-bar {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -42,7 +42,7 @@ header {
   background-color: #f1f1f1;
 }
 
-.search-area input {
+#search-bar input {
   height: 2rem;
   border: none;
   outline: none;
@@ -51,14 +51,15 @@ header {
   background: none;
 }
 
-.search-area button {
+#search-bar button {
   height: 2rem;
   border: none;
   outline: none;
+  border-radius: 0rem 0.5rem 0.5rem 0rem;
 
   padding: 0rem 0.75rem;
 
-  background: none;
+  background-color: #cfcfcf;
   color: #1f1f1f;
   font-weight: 600;
 

@@ -5,10 +5,24 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Results from "./Results";
 import * as AppConstant from "./AppConstant";
+import useDropdown from "./useDropdown";
 
 const searchArea = () => {
   const [keyword, setKeyword] = useState("search");
   const [videos, setVideos] = useState([]);
+  const orderList = ["date", "relevance", "rating"];
+  const [order, OrderDropdown] = useDropdown(
+    "Order By",
+    "relevance",
+    orderList
+  );
+
+  const [safeSearch, SafeSearchDropdown] = useDropdown("Safe Search", "none", [
+    "moderate",
+    "none",
+    "strict",
+  ]);
+  const [checked, setChecked] = useState(false);
 
   const requestSearch = () => {
     axios
@@ -29,22 +43,40 @@ const searchArea = () => {
           <h1>WeTube</h1>
         </Link>
         <form
-          className="search-area"
           onSubmit={(e) => {
             e.preventDefault();
             requestSearch();
           }}
         >
-          <input
-            type="text"
-            id="keyword"
-            aria-label="keyword"
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-          <button aria-label="search">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
+          <div id="search-bar">
+            <input
+              type="text"
+              id="keyword"
+              aria-label="keyword"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+            <button aria-label="search">
+              {" "}
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </div>
+
+          <label htmlFor="advanced">
+            advanced search{" "}
+            <input
+              type="checkbox"
+              id="advanced"
+              checked={checked}
+              onChange={(e) => setChecked(!checked)}
+            />
+          </label>
+          {checked ? (
+            <div>
+              <OrderDropdown></OrderDropdown>
+              <SafeSearchDropdown></SafeSearchDropdown>
+            </div>
+          ) : null}
         </form>
       </header>
       <Results videos={videos} />
