@@ -5,11 +5,11 @@ const useDropdown = (label, defaultState, options) => {
   const id = `use-dropdown-${label.replace(" ", "").toLowerCase()}`;
 
   const Dropdown = () => (
-    <label htmlFor={id}>
-      {label}
+    <label className="dropdown" htmlFor={id}>
+      <span className="dropdown-label">{label}</span>
       <select
         id={id}
-        value={defaultState}
+        value={state}
         onChange={(e) => setState(e.target.value)}
         onBlur={(e) => setState(e.target.value)}
       >

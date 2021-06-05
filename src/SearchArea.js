@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Results from "./Results";
 import * as AppConstant from "./AppConstant";
@@ -48,31 +48,33 @@ const searchArea = () => {
             requestSearch();
           }}
         >
-          <div id="search-bar">
-            <input
-              type="text"
-              id="keyword"
-              aria-label="keyword"
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-            />
-            <button aria-label="search">
-              {" "}
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
+          <div id="search-bar-container">
+            <div id="search-bar">
+              <input
+                type="text"
+                id="keyword"
+                aria-label="keyword"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+              />
+              <button aria-label="search">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </div>
+
+            <label htmlFor="advanced-toggle">
+              <input
+                type="checkbox"
+                id="advanced-toggle"
+                checked={checked}
+                onChange={(e) => setChecked(!checked)}
+              ></input>
+              <FontAwesomeIcon icon={faEllipsisV} />
+            </label>
           </div>
 
-          <label htmlFor="advanced">
-            advanced search{" "}
-            <input
-              type="checkbox"
-              id="advanced"
-              checked={checked}
-              onChange={(e) => setChecked(!checked)}
-            />
-          </label>
           {checked ? (
-            <div>
+            <div id="advanced-options">
               <OrderDropdown></OrderDropdown>
               <SafeSearchDropdown></SafeSearchDropdown>
             </div>

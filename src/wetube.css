@@ -17,7 +17,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   padding: 1rem 2rem;
   background-color: #ad343e;
@@ -29,16 +29,37 @@ header {
   font-size: 1rem;
 }
 
+#search-bar-container {
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+}
+
+#advanced-toggle {
+  display: none;
+}
+
+#search-bar-container label {
+  padding: 0.5rem 0.75rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: #1f1f1f;
+  background-color: #cfcfcf;
+  border-radius: 0.5rem;
+  height: 2rem;
+}
+
 #search-bar {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 
+  width: 100%;
   height: 2rem;
   border: none;
   outline: none;
-  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   background-color: #f1f1f1;
 }
 
@@ -46,7 +67,7 @@ header {
   height: 2rem;
   border: none;
   outline: none;
-  padding: 0rem 0 0 0.75rem;
+  padding: 0rem 0.75rem;
 
   background: none;
 }
@@ -57,13 +78,47 @@ header {
   outline: none;
   border-radius: 0rem 0.5rem 0.5rem 0rem;
 
-  padding: 0rem 0.75rem;
+  padding: 0.5rem 0.75rem;
 
   background-color: #cfcfcf;
   color: #1f1f1f;
   font-weight: 600;
 
   cursor: pointer;
+}
+
+#advanced-options {
+  
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.8rem;
+
+  color: #1f1f1f;
+}
+
+.dropdown select {
+  height: 2rem;
+
+  padding: 0rem 0.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  background-color: #f1f1f1;
+}
+
+.dropdown {
+  background-color: #cfcfcf;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-label {
+  margin: 0.5rem 0.75rem;
 }
 
 .results {
@@ -121,7 +176,7 @@ h2 {
 .stat-container {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: .1rem solid #a5a5a5;
+  border-bottom: 0.1rem solid #a5a5a5;
 }
 
 .player-info {
@@ -133,7 +188,7 @@ h2 {
   display: block;
   margin-bottom: 1rem;
   padding-bottom: 2rem;
-  border-bottom: .1rem solid #a5a5a5;
+  border-bottom: 0.1rem solid #a5a5a5;
 }
 
 iframe {
