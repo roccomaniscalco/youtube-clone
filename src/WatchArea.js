@@ -4,6 +4,7 @@ import React from "react";
 import * as AppConstant from "./AppConstant";
 import ErrorBoundary from "./ErrorBoundary";
 import FormatNumber from "./FormatNumber";
+import ColorContext from "./ColorContext";
 
 class WatchArea extends React.Component {
   constructor() {
@@ -62,7 +63,15 @@ class WatchArea extends React.Component {
             <FormatNumber number={likes} unit={"likes"}></FormatNumber>
           </div>
           <strong> {channel} </strong>
+
           <p>{description}</p>
+          <ColorContext.Consumer>
+            {([themeColor]) => (
+              <button style={{ backgroundColor: themeColor }}>
+                Watch on Youtube
+              </button>
+            )}
+          </ColorContext.Consumer>
         </div>
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV, faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -6,11 +6,13 @@ import axios from "axios";
 import Results from "./Results";
 import * as AppConstant from "./AppConstant";
 import useDropdown from "./useDropdown";
+import ColorContext from "./ColorContext";
 
 const searchArea = () => {
   const [keyword, setKeyword] = useState("search");
   const [videos, setVideos] = useState([]);
   const [checked, setChecked] = useState(false);
+  const [themeColor, setThemeColor] = useContext(ColorContext);
 
   const orderList = ["date", "relevance", "rating", "title"];
   const [order, OrderDropdown] = useDropdown(
@@ -68,7 +70,10 @@ const searchArea = () => {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
               />
-              <button aria-label="search">
+              <button
+                aria-label="search"
+                style={{ backgroundColor: themeColor }}
+              >
                 <FontAwesomeIcon icon={faSearch} />
               </button>
             </div>
@@ -91,6 +96,19 @@ const searchArea = () => {
             <div id="advanced-options">
               <OrderDropdown></OrderDropdown>
               <SafeSearchDropdown></SafeSearchDropdown>
+              <label htmlFor="themeColor">
+                <span className="dropdown-label">Theme Color</span>
+                <select
+                  value={themeColor}
+                  id="themeColor"
+                  onChange={(e) => setThemeColor(e.target.value)}
+                  onBlur={(e) => setThemeColor(e.target.value)}
+                >
+                  <option value="#cfcfcf">Light Grey</option>
+                  <option value="#f1f1f1">White</option>
+                  <option value="#bd6baf">Violet</option>
+                </select>
+              </label>
             </div>
           ) : null}
         </form>
