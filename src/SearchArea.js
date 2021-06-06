@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faSearch, faSlidersH } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV, faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Results from "./Results";
 import * as AppConstant from "./AppConstant";
@@ -10,23 +10,34 @@ import useDropdown from "./useDropdown";
 const searchArea = () => {
   const [keyword, setKeyword] = useState("search");
   const [videos, setVideos] = useState([]);
-  const orderList = ["date", "relevance", "rating"];
+  const [checked, setChecked] = useState(false);
+
+  const orderList = ["date", "relevance", "rating", "title"];
   const [order, OrderDropdown] = useDropdown(
     "Order By",
     "relevance",
     orderList
   );
 
-  const [safeSearch, SafeSearchDropdown] = useDropdown("Safe Search", "none", [
-    "moderate",
+  const safeSearchList = ["moderate", "none", "strict"];
+  const [safeSearch, SafeSearchDropdown] = useDropdown(
+    "Safe Search",
     "none",
-    "strict",
-  ]);
-  const [checked, setChecked] = useState(false);
+    safeSearchList
+  );
+
+  const [advancedParams, setAdvancedParams] = useState(``);
+  useEffect(() => {
+    if (checked) {
+      setAdvancedParams(`&order=${order}&safeSearch=${safeSearch}`);
+    } else {
+      setAdvancedParams(``);
+    }
+  }, [checked, order, safeSearch]);
 
   const requestSearch = () => {
     axios
-      .get(`${AppConstant.SEARCH_URL}&q=${keyword}`)
+      .get(`${AppConstant.SEARCH_URL}${advancedParams}&q=${keyword}`)
       .then((res) => {
         const { items } = res.data;
         setVideos(items);
@@ -72,7 +83,7 @@ const searchArea = () => {
                 checked={checked}
                 onChange={(e) => setChecked(!checked)}
               ></input>
-              <FontAwesomeIcon icon={faCog} id="advanced-toggle-icon"/>
+              <FontAwesomeIcon icon={faEllipsisV} id="advanced-toggle-icon" />
             </label>
           </div>
 

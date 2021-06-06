@@ -44,8 +44,8 @@ header {
 
 #advanced-toggle-icon {
   position: absolute;
-  top: .5rem;
-  left: .5rem;
+  top: 0.5rem;
+  left: .76rem;
 }
 
 #search-bar-container label.checked {
@@ -53,7 +53,7 @@ header {
 }
 
 #search-bar-container label {
-    width: 2.2rem;
+  width: 2.2rem;
   position: relative;
   padding: 0.5rem 0.5rem;
   margin-left: 1rem;
