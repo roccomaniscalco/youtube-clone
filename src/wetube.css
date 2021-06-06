@@ -36,16 +36,30 @@ header {
 }
 
 #advanced-toggle {
-  display: none;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0.5rem;
+}
+
+#advanced-toggle-icon {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+}
+
+#search-bar-container label.checked {
+  background-color: #1f1f1f40;
 }
 
 #search-bar-container label {
-  padding: 0.5rem 0.75rem;
+    width: 2.2rem;
+  position: relative;
+  padding: 0.5rem 0.5rem;
   margin-left: 1rem;
   cursor: pointer;
-  color: #1f1f1f;
-  background-color: #cfcfcf;
-  border-radius: 0.5rem;
+  color: #f1f1f1;
+  border-radius: 50%;
   height: 2rem;
 }
 
@@ -66,7 +80,6 @@ header {
 #search-bar input {
   height: 2rem;
   border: none;
-  outline: none;
   padding: 0rem 0.75rem;
 
   background: none;
@@ -75,7 +88,6 @@ header {
 #search-bar button {
   height: 2rem;
   border: none;
-  outline: none;
   border-radius: 0rem 0.5rem 0.5rem 0rem;
 
   padding: 0.5rem 0.75rem;
@@ -88,7 +100,6 @@ header {
 }
 
 #advanced-options {
-  
   display: flex;
   justify-content: flex-end;
   gap: 1rem;

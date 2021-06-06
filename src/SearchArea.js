@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faSearch, faSlidersH } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import Results from "./Results";
 import * as AppConstant from "./AppConstant";
@@ -62,14 +62,17 @@ const searchArea = () => {
               </button>
             </div>
 
-            <label htmlFor="advanced-toggle">
+            <label
+              htmlFor="advanced-toggle"
+              className={checked ? "checked" : "unchecked"}
+            >
               <input
                 type="checkbox"
                 id="advanced-toggle"
                 checked={checked}
                 onChange={(e) => setChecked(!checked)}
               ></input>
-              <FontAwesomeIcon icon={faEllipsisV} />
+              <FontAwesomeIcon icon={faCog} id="advanced-toggle-icon"/>
             </label>
           </div>
 
